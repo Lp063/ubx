@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/layout/header';
 import Menu from './components/layout/menu';
 import Analytics from './components/pages/Analytics';
+import Reports from './components/pages/Reports';
 
 function App() {
   return (
@@ -18,6 +19,11 @@ function App() {
               <Route exact path="/" render={props=>(
                 <React.Fragment>
                   <Analytics />
+                </React.Fragment>
+              )}/>
+              <Route exact path="/reports" render={props=>(
+                <React.Fragment>
+                  <Reports />
                 </React.Fragment>
               )}/>
             </div>
