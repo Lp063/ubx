@@ -5,8 +5,6 @@ import HighchartsReact from 'highcharts-react-official';
 
 class Analytics extends Component{
 
-  
-
   render(){
     return (
       <React.Fragment>

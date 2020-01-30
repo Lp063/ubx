@@ -1,51 +1,61 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
+import  'bootstrap/dist/css/bootstrap.min.css';
+import  'bootstrap/dist/js/bootstrap.min.js'
+
 import Header from './components/layout/header';
-import Menu from './components/layout/menu';
+import Home from './components/pages/Home';
 import Analytics from './components/pages/Analytics';
 import Reports from './components/pages/Reports';
 
-function App() {
-  return (
-    <Router>
-      <div className="App">
-        <Header />
-        <div class="col-md-12" style={bodyContainer}>
-            <div class="col-md-2" style={leftSideBar}>
-              <Menu />
+class App extends Component {
+  state = {
+    requireDateRangePicker:false
+  }
+
+  dateRangepickerFunctionality = (required) =>{
+    this.setState({requireDateRangePicker:required});
+  }
+
+  render(){
+    return (
+      <Router>
+        <div className="App" >
+          <Header />
+          <div class="col-md-12 h-100" style={bodyContainer}>
+              <div class="col-md-12 h-100" style={pageBackground}>
+                <Route exact path="/" render={props=>(
+                  <React.Fragment>
+                    <Home />
+                  </React.Fragment>
+                )}/>
+                <Route exact path="/analytics" render={props=>(
+                  <React.Fragment>
+                    <Analytics  />
+                  </React.Fragment>
+                )}/>
+                <Route exact path="/reports" render={props=>(
+                  <React.Fragment>
+                    <Reports />
+                  </React.Fragment>
+                )}/>
+              </div>
             </div>
-            <div class="col-md-10" style={pageBackground}>
-              <Route exact path="/" render={props=>(
-                <React.Fragment>
-                  <Analytics />
-                </React.Fragment>
-              )}/>
-              <Route exact path="/reports" render={props=>(
-                <React.Fragment>
-                  <Reports />
-                </React.Fragment>
-              )}/>
-            </div>
-          </div>
-      </div>
-    </Router>
-  );
+        </div>
+      </Router>
+    );
+  }
 }
 
 const bodyContainer={
   display: "inline-flex",
-  paddingLeft: "0px",
-  paddingRight: "0px"
+  paddingTop: "2%"
 }
 
-const leftSideBar={
-  paddingLeft: "0px",
-  paddingRight: "0px",
-  width: "13% !important"
-}
 
 const pageBackground={
-  backgroundColor: "#f6f7fb"
+  paddingLeft:"0px",
+  paddingRight:"0px"
 }
 export default App;

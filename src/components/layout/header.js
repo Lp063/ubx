@@ -1,23 +1,25 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+
+import Menu from './menu';
+
 
 function Header(){
     return(
-        <header >
-            <div class="col-md-12" style={headerStyle}>
-                <FontAwesomeIcon icon={faCoffee} pull="right" />
-            </div>
-        </header>
+        <div class="col-md-12" style={NavStyle}>
+            <nav class="navbar navbar-expand-lg navbar-expand-sm sticky-top navbar-light bg-light">
+                <a class="navbar-brand" href="#">
+                    <img src="http://lohit.heliohost.org/me/assets/images/logo.png" width="30" height="30" alt="" />
+                </a>
+                <Menu />
+            </nav>
+        </div>
     )
 }
 
-const headerStyle={
-    background:'white none repeat scroll 0 0',
-    color:'#6a0dad',
-    textAlign:'center',
-    padding:'13px 33px 5px 0px',
-    height: '41px'
+
+
+const NavStyle={
+    padding: "0%"
 }
 
 export default Header

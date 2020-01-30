@@ -1,7 +1,5 @@
 import React,{ Component } from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 
 class Menu extends Component{
@@ -12,22 +10,26 @@ class Menu extends Component{
 
     render(){
         return(
-            <ul class="list-group" style={listMenuHolder}>
-                <li class="list-group-item" style={listItemMenu} onClick = {this.pageNavItemClicked}>
-                     <Link style={pageLink} to="/"><FontAwesomeIcon icon={faCoffee} /> Analytics</Link>
-                </li>
-                <li class="list-group-item" style={listItemMenu} onClick = {this.pageNavItemClicked}>
-                     <Link style={pageLink} to="/reports"><FontAwesomeIcon icon={faCoffee} /> Reports</Link>
-                </li>
-            </ul>
+            <div>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-sm-none .d-md-block" id="navbarNav">
+                    <ul class="navbar-nav mr-auto" >
+                        <li class="nav-item active" onClick = {this.pageNavItemClicked}>
+                            <Link style={pageLink} class="nav-link" to="/"> Home</Link>
+                        </li>
+                        <li class="nav-item" onClick = {this.pageNavItemClicked}>
+                            <Link style={pageLink} class="nav-link" to="/analytics"> Analytics</Link>
+                        </li>
+                        <li class="nav-item" onClick = {this.pageNavItemClicked}>
+                            <Link style={pageLink} class="nav-link" to="/reports"> Reports</Link>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         )
     }
-}
-
-const listMenuHolder={
-}
-
-const listItemMenu={
 }
 
 const pageLink={
