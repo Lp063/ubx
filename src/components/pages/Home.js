@@ -8,7 +8,7 @@ class Home extends Component{
     return (
       <React.Fragment>
         <div class="col-md-6 offset-md-6">
-          <TeamRegistration />
+          <TeamRegistration registerUser={this.props.registerUser}/>
         </div>
       </React.Fragment>
     )

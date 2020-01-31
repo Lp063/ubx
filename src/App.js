@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Axios from 'axios';
 
 import  'bootstrap/dist/css/bootstrap.min.css';
 import  'bootstrap/dist/js/bootstrap.min.js'
@@ -10,12 +11,21 @@ import Analytics from './components/pages/Analytics';
 import Reports from './components/pages/Reports';
 
 class App extends Component {
-  state = {
-    requireDateRangePicker:false
-  }
+  
+  state={
+    teamRegistration:{
+      name:"",
+      lastName:"",
+      email:"",
+      password:"",
+      username:""
+    }
+  };
 
-  dateRangepickerFunctionality = (required) =>{
-    this.setState({requireDateRangePicker:required});
+  registerUser=(userObject)=>{
+    Axios.post('localhost:4000/addUser',userObject).then(function(response){
+      console.log(response);
+    });
   }
 
   render(){
@@ -27,7 +37,7 @@ class App extends Component {
               <div class="col-md-12 h-100" style={pageBackground}>
                 <Route exact path="/" render={props=>(
                   <React.Fragment>
-                    <Home />
+                    <Home registerUser={this.registerUser} />
                   </React.Fragment>
                 )}/>
                 <Route exact path="/analytics" render={props=>(
