@@ -34,8 +34,8 @@ class App extends Component {
       <Router>
         <div className="App" >
           <Header />
-          <div class="col-md-12 h-100" style={bodyContainer}>
-              <div class="col-md-12 h-100" style={pageBackground}>
+          <div className="col-md-12 h-100" style={bodyContainer}>
+              <div className="col-md-12 h-100" style={pageBackground}>
                 <Route exact path="/" render={props=>(
                   <React.Fragment>
                     <Home registerUser={this.registerUser} />
