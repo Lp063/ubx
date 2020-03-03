@@ -17,8 +17,8 @@ class AppLogin extends Component{
   }
 
   handleSubmit = (event) =>{
-    this.props.loginFormSubmit(this.state);
     event.preventDefault();
+    this.props.loginFormSubmit(this.state);
   }
 
   render(){

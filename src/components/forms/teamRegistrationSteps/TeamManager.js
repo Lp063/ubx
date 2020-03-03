@@ -1,24 +1,35 @@
 import React,{ Component } from 'react';
 
-class TeamRegistration extends Component{
+class TeamManager extends Component{
 
     constructor(props){
         super(props);
         this.state={
-            RegistrationStep:1,
             firstName:"",
             lastName:"",
             email:"",
             password:"",
-            teamName:"",
-            teamPlayers:[]
+            teamName:""
         };
+        
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange =(event)=>{
         this.setState({[event.target.name] : event.target.value});
     }
-    
+
+    handleSubmit =(event)=>{
+        this.props.teamManagerDetails(this.state);
+        /* this.setState({
+            name:"",
+            lastName:"",
+            email:"",
+            password:"",
+            username:""
+        }); */
+    }
+
     render(){
         return(
             <form onSubmit={this.handleSubmit}>
@@ -42,10 +53,10 @@ class TeamRegistration extends Component{
                         <input type="password" name="password" onChange={this.handleChange} className="form-control" id="inputPassword4" placeholder="Password" />
                     </div>
                 </div>
-                <button type="submit" className="btn btn-primary">Sign in</button>
+                <button type="submit" className="btn btn-primary">Next</button>
             </form>
         )
     }
 }
 
-export default TeamRegistration
+export default TeamManager
