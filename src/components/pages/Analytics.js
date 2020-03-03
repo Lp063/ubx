@@ -8,14 +8,14 @@ class Analytics extends Component{
   render(){
     return (
       <React.Fragment>
-        <div class="row col-md-12">
-          <div class="col-md-6">
+        <div className="row col-md-12">
+          <div className="col-md-6">
             <HighchartsReact highcharts={Highcharts} options={baroptions} />
           </div>
-          <div class="col-md-6">
+          <div className="col-md-6">
             <HighchartsReact highcharts={Highcharts} options={splineoptions} />
           </div>
-          <div class="col-md-12">
+          <div className="col-md-12">
             <HighchartsReact highcharts={Highcharts} options={modeOfInteraction} />
           </div>
         </div>

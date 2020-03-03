@@ -2,12 +2,12 @@ import React,{ Component } from 'react';
 import TeamRegistration from '../forms/TeamRegistration';
 //import PropTypes from 'prop-types';
 
-class Home extends Component{
+class TeamSignup extends Component{
 
   render(){
     return (
       <React.Fragment>
-        <div class="col-md-6 offset-md-6">
+        <div className="col-md-6 offset-md-6">
           <TeamRegistration registerUser={this.props.registerUser}/>
         </div>
       </React.Fragment>
@@ -16,4 +16,4 @@ class Home extends Component{
 }
 
 
-export default Home;
+export default TeamSignup;

@@ -33,27 +33,27 @@ class TeamRegistration extends Component{
     render(){
         return(
             <form onSubmit={this.handleSubmit}>
-                <div class="form-row">
-                    <div class="col">
-                        <label for="inputEmail4">First Name</label>
-                        <input type="text" name="name"  onChange={this.handleChange} class="form-control" placeholder="Cristiano" />
+                <div className="form-row">
+                    <div className="col">
+                        <label htmlFor="inputEmail4">First Name</label>
+                        <input type="text" name="name"  onChange={this.handleChange} className="form-control" placeholder="Cristiano" />
                     </div>
-                    <div class="col">
-                        <label for="inputEmail4">Last Name</label>
-                        <input type="text" name="lastName" onChange={this.handleChange} class="form-control" placeholder="Ronaldo" />
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputEmail4">Email</label>
-                        <input type="email" name="email" onChange={this.handleChange} class="form-control" id="inputEmail4" placeholder="Email" />
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="inputPassword4">Password</label>
-                        <input type="password" name="password" onChange={this.handleChange} class="form-control" id="inputPassword4" placeholder="Password" />
+                    <div className="col">
+                        <label htmlFor="inputEmail4">Last Name</label>
+                        <input type="text" name="lastName" onChange={this.handleChange} className="form-control" placeholder="Ronaldo" />
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Sign in</button>
+                <div className="form-row">
+                    <div className="form-group col-md-6">
+                        <label htmlFor="inputEmail4">Email</label>
+                        <input type="email" name="email" onChange={this.handleChange} className="form-control" id="inputEmail4" placeholder="Email" />
+                    </div>
+                    <div className="form-group col-md-6">
+                        <label htmlFor="inputPassword4">Password</label>
+                        <input type="password" name="password" onChange={this.handleChange} className="form-control" id="inputPassword4" placeholder="Password" />
+                    </div>
+                </div>
+                <button type="submit" className="btn btn-primary">Sign in</button>
             </form>
         )
     }

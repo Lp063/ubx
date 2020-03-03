@@ -6,7 +6,8 @@ import  'bootstrap/dist/css/bootstrap.min.css';
 import  'bootstrap/dist/js/bootstrap.min.js'
 
 import Header from './components/layout/header';
-import Home from './components/pages/Home';
+import AppLogin from './components/pages/AppLogin';
+import TeamSignup from './components/pages/TeamSignup';
 import Analytics from './components/pages/Analytics';
 import Reports from './components/pages/Reports';
 
@@ -22,9 +23,15 @@ class App extends Component {
     }
   };
 
+  //https://reacttraining.com/react-router/web/api/Hooks/usehistory
+  
+  loginFormSubmit = (loginFormObject) => {
+    console.log(loginFormObject);
+  }
+
   registerUser=(userObject)=>{
     //Navigated to http://localhost:3000/?name=jason&lastName=Bourne&email=jasonbourne%40gmail.com&password=123456
-    Axios.post('localhost:4000/addUser',userObject).then(function(response){
+    Axios.post('/api/addUser',userObject).then(function(response){
       console.log(response);
     });
   }
@@ -32,13 +39,23 @@ class App extends Component {
   render(){
     return (
       <Router>
-        <div className="App" >
+        <div className="App" /* style={{
+          height: '100vh',
+          backgroundImage:'url(/images/turfSideline1.jpg)',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+        }} */>
           <Header />
-          <div class="col-md-12 h-100" style={bodyContainer}>
-              <div class="col-md-12 h-100" style={pageBackground}>
+          <div className="col-md-12 h-100" style={bodyContainer}>
+              <div className="col-md-12 h-100" style={pageBackground}>
                 <Route exact path="/" render={props=>(
                   <React.Fragment>
-                    <Home registerUser={this.registerUser} />
+                    <AppLogin loginFormSubmit={this.loginFormSubmit} />
+                  </React.Fragment>
+                )}/>
+                <Route exact path="/signUpTeam" render={props=>(
+                  <React.Fragment>
+                    <TeamSignup registerUser={this.registerUser} />
                   </React.Fragment>
                 )}/>
                 <Route exact path="/analytics" render={props=>(
