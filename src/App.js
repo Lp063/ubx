@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route,Redirect  } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect  } from 'react-router-dom';
 import Axios from 'axios';
 
 import  'bootstrap/dist/css/bootstrap.min.css';
@@ -26,7 +26,8 @@ class App extends Component {
   //https://reacttraining.com/react-router/web/api/Hooks/usehistory
   
   loginFormSubmit = (loginFormObject) => {
-    console.log(loginFormObject);
+    return <Redirect to='/analytics' />
+    //console.log(loginFormObject);
   }
 
   registerUser=(userObject)=>{
