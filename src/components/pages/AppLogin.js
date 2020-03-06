@@ -37,7 +37,7 @@ class AppLogin extends Component{
                 <Form.Label style={{color:'white'}}>Password</Form.Label>
                 <Form.Control type="password" placeholder="workout" onChange={this.inputFieldUpdate} value={this.state.password} />
               </Form.Group>
-              <Button inSubmit style={{position:"absolute",right:"5%"}} variant="primary" type="submit">
+              <Button style={{position:"absolute",right:"5%"}} variant="primary" type="submit">
                 Login
               </Button>
             </Form>
