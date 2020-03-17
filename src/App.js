@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route,Redirect  } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Axios from 'axios';
 
 import  'bootstrap/dist/css/bootstrap.min.css';
@@ -10,6 +10,11 @@ import AppLogin from './components/pages/AppLogin';
 import TeamSignup from './components/pages/TeamSignup';
 import Analytics from './components/pages/Analytics';
 import Reports from './components/pages/Reports';
+
+
+Axios.defaults.baseURL = 'http://localhost:4000';
+// Axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+// Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 class App extends Component {
   
@@ -23,8 +28,20 @@ class App extends Component {
     }
   };
 
+  
+ //let history = useHistory();
+
   //https://reacttraining.com/react-router/web/api/Hooks/usehistory
   
+  componentDidMount(){
+    Axios.get('/getAllUsers').then(function(response){
+      console.log(response);
+    }).catch(function (error) {
+      // handle error
+      console.log(error);
+    });
+  }
+
   loginFormSubmit = (loginFormObject) => {
     console.log(loginFormObject);
   }
