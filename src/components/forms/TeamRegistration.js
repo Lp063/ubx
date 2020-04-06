@@ -24,15 +24,42 @@ class TeamRegistration extends Component{
     }
 
     handleChange =(event)=>{
-        let newState = Object.assign({}, this.state);
-        newState.formFields[event.target.name] = event.target.value;
-        this.setState(newState);
-        //this.setState({formFields[event.target.name] : event.target.value});
+        var validInput=false;
+        var inputValue="";
+
+        switch (event.target.name) {
+            case "firstName":
+            case "lastName":
+                
+                break;
+
+            case "contact":
+                
+                break;
+                
+            case "email":
+                
+                break;
+                
+            case "password":
+                
+                break;
+        
+            default:
+                break;
+        }
+
+        if (validInput) {
+            let newState = Object.assign({}, this.state);
+            newState.formFields[event.target.name] = inputValue;
+            //newState.formFields[event.target.name] = event.target.value;
+            this.setState(newState);
+        }
     }
     
     submitTeamRegistration = (event) =>{
         event.preventDefault();
-        console.log(this.state.formFields);
+        this.props.submitRergistration(this.state.formFields);
     }
     
     render(){
@@ -52,7 +79,7 @@ class TeamRegistration extends Component{
                     <Row lg={2} md={2} sm={1} xs={1}>
                         <Col lg={6} md={6} sm={12} xs={12} className="form-group">
                             <label htmlFor="inputEmail4">Contact</label>
-                            <input type="contact" name="contact" onChange={this.handleChange} className="form-control" id="inputEmail4" placeholder="Phone Number" />
+                            <input type="number" name="contact" onChange={this.handleChange} className="form-control" id="inputEmail4" placeholder="Phone Number" />
                         </Col>
                         <Col lg={6} md={6} sm={12} xs={12} className="form-group">
                             <label htmlFor="inputEmail4">Email</label>
