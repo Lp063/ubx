@@ -24,7 +24,7 @@ class AppLogin extends Component{
   render(){
     return (
       <React.Fragment>
-        <Row lg={2} md={2} sm={1} xs={1}>
+        <Row lg={2} md={2} sm={1} xs={1} style={this.props.pageParentContainerStyle}>
           <Col lg={9} md={9} className="hidden-sm hidden-xs">
           </Col>
           <Col lg={3} md={3} sm={12} xs={12} className="">

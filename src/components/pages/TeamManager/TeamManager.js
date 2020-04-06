@@ -61,7 +61,7 @@ class TeamManager extends Component{
 
     render(){
         return(
-            <Row>
+            <Row style={this.props.pageParentContainerStyle}>
                 <Col md={12} className="no-padding">
                     <Col lg={12} md={12}> </Col>
                     <Col lg={12} md={12} className="teamDetail-PlayerList-Container">
