@@ -9,7 +9,7 @@ import Header from './components/layout/header';
 import AppLogin from './components/pages/AppLogin';
 import TeamSignup from './components/pages/TeamSignup';
 import Analytics from './components/pages/Analytics';
-import Reports from './components/pages/Reports';
+import TeamManager from './components/pages/TeamManager/TeamManager';
 
 class App extends Component {
   
@@ -64,9 +64,9 @@ class App extends Component {
                     <Analytics  />
                   </React.Fragment>
                 )}/>
-                <Route exact path="/reports" render={props=>(
+                <Route exact path="/teamManager" render={props=>(
                   <React.Fragment>
-                    <Reports />
+                    <TeamManager />
                   </React.Fragment>
                 )}/>
               </div>

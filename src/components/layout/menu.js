@@ -23,7 +23,7 @@ class Menu extends Component{
                             <Link style={pageLink} className="nav-link" to="/analytics"> Analytics</Link>
                         </li>
                         <li className="nav-item" onClick = {this.pageNavItemClicked}>
-                            <Link style={pageLink} className="nav-link" to="/reports"> Reports</Link>
+                            <Link style={pageLink} className="nav-link" to="/teamManager">Team</Link>
                         </li>
                     </ul>
                 </div>

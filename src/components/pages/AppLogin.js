@@ -24,10 +24,10 @@ class AppLogin extends Component{
   render(){
     return (
       <React.Fragment>
-        <Row>
-          <Col md={9} >
+        <Row lg={2} md={2} sm={1} xs={1}>
+          <Col lg={9} md={9} className="hidden-sm hidden-xs">
           </Col>
-          <Col md={3} sm={12} className={formStyle}>
+          <Col lg={3} md={3} sm={12} xs={12} className="">
             <Form onSubmit={this.handleSubmit} >
               <Form.Group controlId="formBasicEmail">
                 <Form.Label style={{color:'white'}}>Email address</Form.Label>
@@ -37,6 +37,9 @@ class AppLogin extends Component{
                 <Form.Label style={{color:'white'}}>Password</Form.Label>
                 <Form.Control type="password" placeholder="workout" onChange={this.inputFieldUpdate} value={this.state.password} />
               </Form.Group>
+              <Button style={{position:"absolute",left:"5%"}} variant="primary" >
+                Sign Up
+              </Button>
               <Button style={{position:"absolute",right:"5%"}} variant="primary" type="submit">
                 Login
               </Button>
