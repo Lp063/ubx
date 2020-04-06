@@ -25,19 +25,17 @@ class AppLogin extends Component{
     return (
       <React.Fragment>
         <Row lg={2} md={2} sm={1} xs={1} style={this.props.pageParentContainerStyle}>
-          <Col lg={9} md={9} className="hidden-sm hidden-xs">
-          </Col>
-          <Col lg={3} md={3} sm={12} xs={12} className="">
+          <Col lg={{span:4, offset:4}} md={{span:4, offset:4}} sm={12} xs={12} >
             <Form onSubmit={this.handleSubmit} >
               <Form.Group controlId="formBasicEmail">
-                <Form.Label style={{color:'white'}}>Email address</Form.Label>
+                <Form.Label >Email address</Form.Label>
                 <Form.Control type="email" placeholder="christiano@cr7.com" onChange={this.inputFieldUpdate} value={this.state.email} />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
-                <Form.Label style={{color:'white'}}>Password</Form.Label>
+                <Form.Label >Password</Form.Label>
                 <Form.Control type="password" placeholder="workout" onChange={this.inputFieldUpdate} value={this.state.password} />
               </Form.Group>
-              <Button style={{position:"absolute",left:"5%"}} variant="primary" >
+              <Button style={{position:"absolute",left:"5%"}} variant="outline-primary" >
                 Sign Up
               </Button>
               <Button style={{position:"absolute",right:"5%"}} variant="primary" type="submit">

@@ -69,7 +69,6 @@ class App extends Component {
 
 const pageParentContainer={
   padding:"13px 0px 0px 0px",
-  height:"unset"
 }
 
 
