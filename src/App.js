@@ -51,11 +51,6 @@ class App extends Component {
               <TeamSignup  pageParentContainerStyle={pageParentContainer} registerUser={this.registerUser} />
             </React.Fragment>
           )}/>
-          <Route exact path="/analytics" render={props=>(
-            <React.Fragment>
-              <Analytics  pageParentContainerStyle={pageParentContainer}  />
-            </React.Fragment>
-          )}/>
           <Route exact path="/teamManager" render={props=>(
             <React.Fragment>
               <TeamManager pageParentContainerStyle={pageParentContainer}  />
