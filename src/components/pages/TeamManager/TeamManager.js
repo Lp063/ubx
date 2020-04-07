@@ -140,7 +140,7 @@ const teamPerformanceChart = {
     },
     labels: {
         items: [{
-            html: 'Total fruit consumption',
+            html: 'Player Contributions',
             style: {
                 left: '50px',
                 top: '18px',
