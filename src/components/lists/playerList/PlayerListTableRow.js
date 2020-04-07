@@ -30,7 +30,7 @@ class PlayerListTableRow extends Component{
             </td>
             <td><label>{firstName}</label></td>
             <td><label>{lastName}</label></td>
-            <td><label>{contact}</label></td>
+            <td className="d-none d-lg-block"><label>{contact}</label></td>
             <td><label>x</label></td>
         </tr>        
         )

@@ -1,5 +1,5 @@
 import React,{ Component } from 'react';
-import { Row, Col, Table, Tabs, Tab} from 'react-bootstrap';
+import { Container, Row, Col, Table, Tabs, Tab} from 'react-bootstrap';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
@@ -64,49 +64,65 @@ class TeamManager extends Component{
     render(){
         return(
             <Row lg={2} md={2} sm={1} xs={1} style={this.props.pageParentContainerStyle}>
-                <Col lg={3} md={3} sm={12} xs={12} className="team-detail">
+                <Col lg={3} md={3} sm={12} xs={12} className="team-detail" style={{padding:"0px"}}>
                     <div className="team-detail-logo" style={style.teamDetail.logo} ></div>
                     <div className="team-detail-name" ><label>Russian federation</label></div>
                     <div className="team-detail-name" ><label>Manager : Mikhail Belikof</label></div>
                 </Col>
-                <Col lg={9} md={9} sm={12} xs={12}>
+                <Col lg={9} md={9} sm={12} xs={12} style={{padding:"0px"}}>
                     <Tabs defaultActiveKey="performance" id="uncontrolled-tab-example">
                         <Tab eventKey="performance" title="Performance">
-                            <Row lg={2} md={2} sm={1} xs={1} >
-                                <div className="col-md-12">
-                                    <HighchartsReact highcharts={Highcharts} options={teamPerformanceChart} />
-                                </div>
-                                <div className="col-md-6">
-                                    <HighchartsReact highcharts={Highcharts} options={baroptions} />
-                                </div>
-                                <div className="col-md-6">
-                                    <HighchartsReact highcharts={Highcharts} options={splineoptions} />
-                                </div>
-                            </Row>
+                            <Container>
+                                <Row lg={2} md={2} sm={1} xs={1} >
+                                    <div className="col-md-12">
+                                        <HighchartsReact highcharts={Highcharts} options={teamPerformanceChart} />
+                                    </div>
+                                    <div className="col-md-6">
+                                        <HighchartsReact highcharts={Highcharts} options={baroptions} />
+                                    </div>
+                                    <div className="col-md-6">
+                                        <HighchartsReact highcharts={Highcharts} options={splineoptions} />
+                                    </div>
+                                </Row>
+                            </Container>
                         </Tab>
                         <Tab eventKey="games" title="Games">
-                            No Games
+                            <Container>
+                                <Row lg={2} md={2} sm={1} xs={1} >
+                                    <Col lg={12} md={12} sm={12} xs={12}>
+                                        <Col lg={12} md={12} sm={12} xs={12} style={{textAlign: "center"}}>
+                                            No Games Played
+                                        </Col>
+                                    </Col>
+                                </Row>
+                            </Container>
                         </Tab>
                         <Tab eventKey="players" title="Players">
-                            <Table className="team-detail-players-list" responsive >
-                                <thead>
-                                    <tr>
-                                    <th>#</th>
-                                    <th></th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Contact</th>
-                                    <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {
-                                        this.teamPlayerList = this.state.teamPlayerList.map((player)=>{
-                                            return <PlayerListTableRow key={player.id} playerList={player} />
-                                        })
-                                    }
-                                </tbody>
-                            </Table>
+                            <Container>
+                                <Row lg={2} md={2} sm={1} xs={1} >
+                                    <Col lg={12} md={12} sm={12} xs={12}>
+                                        <Table className="team-detail-players-list" borderless={true} responsive >
+                                            <thead>
+                                                <tr>
+                                                <th>#</th>
+                                                <th></th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th className="d-none d-lg-block">Contact</th>
+                                                <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {
+                                                    this.teamPlayerList = this.state.teamPlayerList.map((player)=>{
+                                                        return <PlayerListTableRow key={player.id} playerList={player} />
+                                                    })
+                                                }
+                                            </tbody>
+                                        </Table>
+                                    </Col>
+                                </Row>
+                            </Container>
                         </Tab>
                     </Tabs>
                 </Col>
