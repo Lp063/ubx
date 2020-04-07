@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 import TeamRegistration from '../forms/TeamRegistration';
-import { Row, Col, Form, Button} from 'react-bootstrap';
+import { Row, Col} from 'react-bootstrap';
 
 class TeamSignup extends Component{
   constructor(props){

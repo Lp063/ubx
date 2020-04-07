@@ -8,7 +8,6 @@ import  'bootstrap/dist/js/bootstrap.min.js';
 import Header from './components/layout/header';
 import AppLogin from './components/pages/AppLogin';
 import TeamSignup from './components/pages/TeamSignup';
-import Analytics from './components/pages/Analytics';
 import TeamManager from './components/pages/TeamManager/TeamManager';
 
 class App extends Component {
@@ -67,9 +66,4 @@ const pageParentContainer={
   marginRight: "2px",
 }
 
-
-const pageBackground={
-  paddingLeft:"0px",
-  paddingRight:"0px"
-}
 export default App;

@@ -54,8 +54,4 @@ class AppLogin extends Component{
   height:'100%'
 } */
 
-const formStyle={
-
-};
-
 export default AppLogin;

@@ -8,9 +8,9 @@ class PlayerListTableRow extends Component{
 
     constructor(props){
         super(props);
-        /* this.state={
+        this.state={
             teamPlayerList:[]
-        }; */
+        };
     }
 
     componentDidMount(){
@@ -31,7 +31,7 @@ class PlayerListTableRow extends Component{
             <td><label>{firstName}</label></td>
             <td><label>{lastName}</label></td>
             <td className="d-none d-lg-block"><label>{contact}</label></td>
-            <td><label>x</label></td>
+            <td playerid={id} ><label>x</label></td>
         </tr>        
         )
     }
