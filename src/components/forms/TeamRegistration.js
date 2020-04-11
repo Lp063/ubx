@@ -9,97 +9,161 @@ class TeamRegistration extends Component{
         super(props);
         this.state={
             RegistrationStep:1,
+            formFieldsErrors:{
+                firstName:{
+                    invalid:true,
+                    showmessage:false,
+                    message:"Invalid"
+                },
+                lastName:{
+                    invalid:true,
+                    showmessage:false,
+                    message:"Invalid"
+                },
+                contact:{
+                    invalid:true,
+                    showmessage:false,
+                    message:"Invalid Number"
+                },
+                /* registrationType:true,
+                profileImage:true, */
+                email:{
+                    invalid:true,
+                    showmessage:false,
+                    message:"Invalid Id"
+                },
+                password:{
+                    invalid:true,
+                    showmessage:false,
+                    message:"Must be 8 charecters long"
+                },
+                /* teamName:"",
+                teamPlayers:[] */
+            },
             formFields:{
                 firstName:"",
                 lastName:"",
                 contact:"",
-                registrationType:null,
-                profileImage:"",
+                /* registrationType:"DEFAULT",
+                profileImage:"", */
                 email:"",
                 password:"",
-                teamName:"",
-                teamPlayers:[]
+                /* teamName:"",
+                teamPlayers:[] */
             }
         };
     }
 
     handleChange =(event)=>{
+        var regex=null;
         var validInput=false;
-        var inputValue="";
+        var inputValue=event.target.value;
 
         switch (event.target.name) {
             case "firstName":
             case "lastName":
-                
+                regex = /^[a-zA-Z]+$/;
+                if (regex.test(inputValue) || inputValue ==="") {
+                    validInput = true
+                }else{
+                    validInput = false
+                    return;
+                }
                 break;
 
             case "contact":
-                
+                regex = /^[0][1-9]\d{9}$|^[1-9]\d{9}$/;
+                if (regex.test(inputValue)) {
+                    validInput = true;
+                }
                 break;
                 
             case "email":
-                
+                regex =  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                if (regex.test(inputValue)) {
+                    validInput = true;
+                }
                 break;
                 
             case "password":
-                
+                regex = /^(?=.*\d).{8,}$/;
+                if (regex.test(inputValue)) {
+                    validInput = true;
+                }
                 break;
         
             default:
                 break;
         }
-
-        if (validInput) {
-            let newState = Object.assign({}, this.state);
-            newState.formFields[event.target.name] = inputValue;
-            //newState.formFields[event.target.name] = event.target.value;
-            this.setState(newState);
-        }
+        
+        let newState = Object.assign({}, this.state);
+        newState.formFields[event.target.name] = inputValue;
+        newState.formFieldsErrors[event.target.name].invalid = !validInput;
+        newState.formFieldsErrors[event.target.name].showmessage = !validInput;
+        this.setState(newState);
     }
     
     submitTeamRegistration = (event) =>{
         event.preventDefault();
-        this.props.submitRergistration(this.state.formFields);
+        
+        var canSubmit = true;
+        var checkObject = Object.keys(this.state.formFieldsErrors);
+        checkObject.map((field, index)=>{
+            if (this.state.formFieldsErrors[field].invalid) {
+                canSubmit = false;
+            }
+        });
+
+        if (canSubmit) {
+            this.props.submitRergistration(this.state.formFields);
+        } else {
+            
+        }
     }
     
     render(){
         return(
-            <form onSubmit={this.handleSubmit} >
+            <form onSubmit={this.handleSubmit}>
                 <Col lg={12} md={12} sm={12} xs={12}>
                     <Row lg={2} md={2} sm={2} xs={2}>
                         <Col lg={6} md={6} sm={6} xs={6} >
                             <label htmlFor="inputEmail4">First Name</label>
-                            <input type="text" name="firstName"  onChange={this.handleChange} className="form-control" placeholder="Cristiano" />
+                            <input type="text" name="firstName"  value={this.state.formFields.firstName} onChange={this.handleChange.bind(this)} className="form-control name-input" placeholder="Cristiano" required/>
                         </Col>
                         <Col lg={6} md={6} sm={6} xs={6} >
                             <label htmlFor="inputEmail4">Last Name</label>
-                            <input type="text" name="lastName" onChange={this.handleChange} className="form-control" placeholder="Ronaldo" />
+                            <input type="text" name="lastName" value={this.state.formFields.lastName} onChange={this.handleChange.bind(this)} className="form-control name-input" placeholder="Ronaldo" required/>
                         </Col>
                     </Row>
                     <Row lg={2} md={2} sm={1} xs={1}>
                         <Col lg={6} md={6} sm={12} xs={12} className="form-group">
                             <label htmlFor="inputEmail4">Contact</label>
-                            <input type="number" name="contact" onChange={this.handleChange} className="form-control" id="inputEmail4" placeholder="Phone Number" />
+                            <input type="number" name="contact" value={this.state.formFields.contact} onChange={this.handleChange.bind(this)} className="form-control" id="inputEmail4" placeholder="Phone Number" />
+                            <label className={"invalid-input"} style={{display: this.state.formFieldsErrors.contact.showmessage ? "block":"none"}}>{this.state.formFieldsErrors.contact.message}</label>
                         </Col>
                         <Col lg={6} md={6} sm={12} xs={12} className="form-group">
                             <label htmlFor="inputEmail4">Email</label>
-                            <input type="email" name="email" onChange={this.handleChange} className="form-control" id="inputEmail4" placeholder="cristiano@cr7.com" />
+                            <input type="text" name="email" value={this.state.formFields.email} onChange={this.handleChange.bind(this)} className="form-control" id="inputEmail4" placeholder="cristiano@cr7.com" />
+                            <label className={"invalid-input"} style={{display: this.state.formFieldsErrors.email.showmessage ? "block":"none"}}>{this.state.formFieldsErrors.email.message}</label>
                         </Col>
                         <Col lg={6} md={6} sm={12} xs={12} className="form-group">
                             <label htmlFor="inputPassword4">Password</label>
-                            <input type="password" name="password" onChange={this.handleChange} className="form-control" id="inputPassword4" placeholder="cr7@portugal85" />
+                            <input type="password" name="password" value={this.state.formFields.password} onChange={this.handleChange.bind(this)} className="form-control" id="inputPassword4" placeholder="cr7@portugal85" />
+                            <label className={"invalid-input"} style={{display: this.state.formFieldsErrors.password.showmessage ? "block":"none"}}>{this.state.formFieldsErrors.password.message}</label>
                         </Col>
-                        <Col lg={6} md={6} sm={12} xs={12} className="form-group">
+                        <Col lg={6} md={6} sm={12} xs={12} className="form-group" style={{display:"none"}}>
                             <label htmlFor="inputPassword4">Registration Type</label>
-                            <select defaultValue={'DEFAULT'}  onChange={this.handleChange} className="browser-default custom-select" name="registrationType" as="select" required>
+                            <select defaultValue={this.state.formFields.registrationType}  onChange={this.handleChange.bind(this)} className="browser-default custom-select" name="registrationType" as="select" required>
                                 <option value="DEFAULT" disabled >Manager Or Player</option>
                                 <option value="0">Manager</option>
                                 <option value="1">Player</option>
                             </select>
                         </Col>
-                        <Col lg={12} md={12} sm={12} xs={12} className="form-group" style={{display:"none"}} >
-                            <input type="file" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" />
-                            <label className="custom-file-label" htmlFor="inputGroupFile01">Account Image</label>
+                        <Col lg={6} md={6} sm={12} xs={12} className="form-group" style={{display:"none"}}>
+                            <div>
+                                <input type="file" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" />
+                                <label className="custom-file-label player-image" htmlFor="inputGroupFile01">Account Image</label>
+                            </div>
                         </Col>
                     </Row>
                     <Row>
