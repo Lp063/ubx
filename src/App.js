@@ -25,7 +25,7 @@ class App extends Component {
   //https://reacttraining.com/react-router/web/api/Hooks/usehistory
   
   loginFormSubmit = (loginFormObject) => {
-    return <Redirect to='/analytics' />
+    return <Redirect to='/teamManager' />
     //console.log(loginFormObject);
   }
 

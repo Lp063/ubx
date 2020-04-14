@@ -1,5 +1,5 @@
 import React,{ Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Alert, Button  } from 'react-bootstrap';
 
 import "./TeamRegistration.css";
 
@@ -9,6 +9,13 @@ class TeamRegistration extends Component{
         super(props);
         this.state={
             RegistrationStep:1,
+            displayForm:"block",
+            displayFormAlert:{
+                show:"none",
+                variant:"success",
+                alertHeader:"Hey, You are all set.",
+                alertContents:"Please check your email for the verification mail as it is valid for 3 days."
+            },
             formFieldsErrors:{
                 firstName:{
                     invalid:true,
@@ -79,6 +86,7 @@ class TeamRegistration extends Component{
                 break;
                 
             case "email":
+                // eslint-disable-next-line
                 regex =  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 if (regex.test(inputValue)) {
                     validInput = true;
@@ -112,6 +120,7 @@ class TeamRegistration extends Component{
             if (this.state.formFieldsErrors[field].invalid) {
                 canSubmit = false;
             }
+            return 0;
         });
 
         if (canSubmit) {
@@ -123,8 +132,8 @@ class TeamRegistration extends Component{
     
     render(){
         return(
-            <form onSubmit={this.handleSubmit}>
-                <Col lg={12} md={12} sm={12} xs={12}>
+            <form onSubmit={this.handleSubmit} >
+                <Col lg={12} md={12} sm={12} xs={12} style={{display:this.state.displayForm}}>
                     <Row lg={2} md={2} sm={2} xs={2}>
                         <Col lg={6} md={6} sm={6} xs={6} >
                             <label htmlFor="inputEmail4">First Name</label>
@@ -170,10 +179,21 @@ class TeamRegistration extends Component{
                         
                     </Row>
                 </Col>
-                <Col  lg={12} md={12} sm={12} xs={12}>
+                <Col  lg={12} md={12} sm={12} xs={12} style={{display:this.state.displayForm}}>
                     <button type="submit" onClick={this.submitTeamRegistration} className="btn btn-success green-submit-button">Sign up</button>
                 </Col>
+                <Alert variant={this.state.displayFormAlert.variant} style={{display:this.state.displayFormAlert.show}}>
+                    <Alert.Heading>{this.state.displayFormAlert.alertHeader}</Alert.Heading>
+                    {this.state.displayFormAlert.alertContents}
+                    <hr />
+                    <div className="d-flex justify-content-end">
+                        <Button variant="outline-success">
+                            Log In
+                        </Button>
+                    </div>
+                </Alert>
             </form>
+            
         )
     }
 }
