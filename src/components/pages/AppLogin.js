@@ -25,19 +25,20 @@ class AppLogin extends Component{
   render(){
     return (
       <React.Fragment>
-        <Row>
-          <Col md={9} style={loginLeftSpace}>
-          </Col>
-          <Col md={3} sm={12} >
-            <Form style={formStyle} onSubmit={this.handleSubmit} >
+        <Row lg={2} md={2} sm={1} xs={1} style={this.props.pageParentContainerStyle}>
+          <Col lg={{span:4, offset:4}} md={{span:4, offset:4}} sm={12} xs={12} >
+            <Form onSubmit={this.handleSubmit} >
               <Form.Group controlId="formBasicEmail">
-                <Form.Label style={{color:'white'}}>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Email" onChange={this.inputFieldUpdate} value={this.state.email} />
+                <Form.Label >Email address</Form.Label>
+                <Form.Control type="email" placeholder="christiano@cr7.com" onChange={this.inputFieldUpdate} value={this.state.email} />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
-                <Form.Label style={{color:'white'}}>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" onChange={this.inputFieldUpdate} value={this.state.password} />
+                <Form.Label >Password</Form.Label>
+                <Form.Control type="password" placeholder="workout" onChange={this.inputFieldUpdate} value={this.state.password} />
               </Form.Group>
+              <Button style={{position:"absolute",left:"5%"}} variant="outline-primary" >
+                Sign Up
+              </Button>
               <Button style={{position:"absolute",right:"5%"}} variant="primary" type="submit">
                 Login
               </Button>
@@ -52,9 +53,5 @@ class AppLogin extends Component{
 const loginLeftSpace = {
   
 }
-
-const formStyle={
-  
-};
 
 export default AppLogin;

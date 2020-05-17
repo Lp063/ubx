@@ -1,4 +1,5 @@
 import React,{ Component } from 'react';
+import { Row, Col } from 'react-bootstrap';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 //import PropTypes from 'prop-types';
@@ -8,7 +9,7 @@ class Analytics extends Component{
   render(){
     return (
       <React.Fragment>
-        <div className="row col-md-12">
+        <Row lg={2} md={2} sm={1} xs={1} style={this.props.pageParentContainerStyle}>
           <div className="col-md-6">
             <HighchartsReact highcharts={Highcharts} options={baroptions} />
           </div>
@@ -18,7 +19,7 @@ class Analytics extends Component{
           <div className="col-md-12">
             <HighchartsReact highcharts={Highcharts} options={modeOfInteraction} />
           </div>
-        </div>
+        </Row>
       </React.Fragment>
     )
   }

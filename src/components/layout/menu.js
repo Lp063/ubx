@@ -20,10 +20,10 @@ class Menu extends Component{
                             <Link style={pageLink} className="nav-link" to="/"> Home</Link>
                         </li>
                         <li className="nav-item" onClick = {this.pageNavItemClicked}>
-                            <Link style={pageLink} className="nav-link" to="/analytics"> Analytics</Link>
+                            <Link style={pageLink} className="nav-link" to="/signUpTeam">Sign Up</Link>
                         </li>
                         <li className="nav-item" onClick = {this.pageNavItemClicked}>
-                            <Link style={pageLink} className="nav-link" to="/reports"> Reports</Link>
+                            <Link style={pageLink} className="nav-link" to="/teamManager">Team</Link>
                         </li>
                     </ul>
                 </div>

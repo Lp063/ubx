@@ -3,13 +3,12 @@ import { BrowserRouter as Router, Route, Redirect  } from 'react-router-dom';
 import Axios from 'axios';
 
 import  'bootstrap/dist/css/bootstrap.min.css';
-import  'bootstrap/dist/js/bootstrap.min.js'
+import  'bootstrap/dist/js/bootstrap.min.js';
 
 import Header from './components/layout/header';
 import AppLogin from './components/pages/AppLogin';
 import TeamSignup from './components/pages/TeamSignup';
-import Analytics from './components/pages/Analytics';
-import Reports from './components/pages/Reports';
+import TeamManager from './components/pages/TeamManager/TeamManager';
 
 
 Axios.defaults.baseURL = 'http://localhost:4000';
@@ -43,7 +42,7 @@ class App extends Component {
   }
 
   loginFormSubmit = (loginFormObject) => {
-    return <Redirect to='/analytics' />
+    return <Redirect to='/teamManager' />
     //console.log(loginFormObject);
   }
 
@@ -53,55 +52,35 @@ class App extends Component {
       console.log(response);
     });
   }
-
+  
   render(){
     return (
       <Router>
-        <div className="App" /* style={{
-          height: '100vh',
-          backgroundImage:'url(/images/turfSideline1.jpg)',
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
-        }} */>
           <Header />
-          <div className="col-md-12 h-100" style={bodyContainer}>
-              <div className="col-md-12 h-100" style={pageBackground}>
-                <Route exact path="/" render={props=>(
-                  <React.Fragment>
-                    <AppLogin loginFormSubmit={this.loginFormSubmit} />
-                  </React.Fragment>
-                )}/>
-                <Route exact path="/signUpTeam" render={props=>(
-                  <React.Fragment>
-                    <TeamSignup registerUser={this.registerUser} />
-                  </React.Fragment>
-                )}/>
-                <Route exact path="/analytics" render={props=>(
-                  <React.Fragment>
-                    <Analytics  />
-                  </React.Fragment>
-                )}/>
-                <Route exact path="/reports" render={props=>(
-                  <React.Fragment>
-                    <Reports />
-                  </React.Fragment>
-                )}/>
-              </div>
-            </div>
-        </div>
+          <Route exact path="/" render={props=>(
+            <React.Fragment>
+              <AppLogin  pageParentContainerStyle={pageParentContainer} loginFormSubmit={this.loginFormSubmit} />
+            </React.Fragment>
+          )}/>
+          <Route exact path="/signUpTeam" render={props=>(
+            <React.Fragment>
+              <TeamSignup  pageParentContainerStyle={pageParentContainer} registerUser={this.registerUser} />
+            </React.Fragment>
+          )}/>
+          <Route exact path="/teamManager" render={props=>(
+            <React.Fragment>
+              <TeamManager pageParentContainerStyle={pageParentContainer}  />
+            </React.Fragment>
+          )}/>
       </Router>
+    //
     );
   }
 }
 
-const bodyContainer={
-  display: "inline-flex",
-  paddingTop: "2%"
+const pageParentContainer={
+  padding:"13px 0px 0px 0px",
+  width: "100%",
 }
 
-
-const pageBackground={
-  paddingLeft:"0px",
-  paddingRight:"0px"
-}
 export default App;
