@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Redirect  } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch  } from 'react-router-dom';
 import Axios from 'axios';
 
 import  'bootstrap/dist/css/bootstrap.min.css';
@@ -33,16 +33,17 @@ class App extends Component {
   //https://reacttraining.com/react-router/web/api/Hooks/usehistory
   
   componentDidMount(){
-    Axios.get('/getAllUsers').then(function(response){
+    /* Axios.get('/getAllUsers').then(function(response){
       console.log(response);
     }).catch(function (error) {
       // handle error
       console.log(error);
-    });
+    }); */
   }
 
   loginFormSubmit = (loginFormObject) => {
-    return <Redirect to='/teamManager' />
+    console.log(2345);
+    return <Redirect to='/xyz' />
     //console.log(loginFormObject);
   }
 
@@ -56,6 +57,13 @@ class App extends Component {
   render(){
     return (
       <Router>
+            <Header />
+            <Switch>
+              <Route path="/" exact component={()=> <AppLogin loginFormSubmit={this.loginFormSubmit} /> }  />
+              <Route path="/xyz" exact component={TeamManager} />
+            </Switch>
+      </Router>
+      /* <Router>
           <Header />
           <Route exact path="/" render={props=>(
             <React.Fragment>
@@ -72,7 +80,8 @@ class App extends Component {
               <TeamManager pageParentContainerStyle={pageParentContainer}  />
             </React.Fragment>
           )}/>
-      </Router>
+          <Route path="/xyz" render={() => <h1>Welcome!</h1>} />
+      </Router> */
     //
     );
   }
