@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect  } from 'react-router-dom';
 import Axios from 'axios';
+import history from "./utils/history";
 
 import  'bootstrap/dist/css/bootstrap.min.css';
 import  'bootstrap/dist/js/bootstrap.min.js';
@@ -25,8 +26,9 @@ class App extends Component {
   //https://reacttraining.com/react-router/web/api/Hooks/usehistory
   
   loginFormSubmit = (loginFormObject) => {
-    return <Redirect to='/teamManager' />
-    //console.log(loginFormObject);
+    // return <Redirect to='/teamManager' />
+    console.log(loginFormObject);
+    history.push("/teamManager");
   }
 
   registerUser=(userObject)=>{
@@ -38,7 +40,7 @@ class App extends Component {
   
   render(){
     return (
-      <Router>
+      <Router history={history}>
           <Header />
           <Route exact path="/" render={props=>(
             <React.Fragment>
