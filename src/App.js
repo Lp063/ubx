@@ -26,13 +26,14 @@ class App extends Component {
   //https://reacttraining.com/react-router/web/api/Hooks/usehistory
   
   loginFormSubmit = (loginFormObject) => {
-    Axios.post('http://localhost:4000/api/login',loginFormObject).then(function(response){
+    /* Axios.post('http://localhost:4000/api/login',loginFormObject).then(function(response){
       localStorage.setItem('authToken', response.data.token);
       if (typeof response.data.token != "undefined") {
         history.push("/teamManager");
         return <Redirect to='/teamManager' />
       }
-    });
+    }); */
+    history.push("/teamManager");
   }
 
   registerUser=(userObject)=>{
