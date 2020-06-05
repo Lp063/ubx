@@ -1,5 +1,5 @@
 import React,{ Component } from 'react';
-import { Row, Col, Form, Button} from 'react-bootstrap';
+import { Col, Form, Button} from 'react-bootstrap';
 //import PropTypes from 'prop-types';
 
 class AppLogin extends Component{
@@ -24,7 +24,7 @@ class AppLogin extends Component{
   render(){
     return (
       <React.Fragment>
-        <Row lg={2} md={2} sm={1} xs={1} style={this.props.pageParentContainerStyle}>
+        <Col lg={12} md={12} sm={12} xs={12} style={this.props.pageParentContainerStyle}>
           <Col lg={{span:4, offset:4}} md={{span:4, offset:4}} sm={12} xs={12} >
             <Form onSubmit={this.handleSubmit} >
               <Form.Group controlId="formBasicEmail">
@@ -43,7 +43,7 @@ class AppLogin extends Component{
               </Button>
             </Form>
           </Col>
-        </Row>
+        </Col>
       </React.Fragment>
     )
   }

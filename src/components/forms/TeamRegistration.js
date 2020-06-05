@@ -137,27 +137,27 @@ class TeamRegistration extends Component{
                     <Row lg={2} md={2} sm={2} xs={2}>
                         <Col lg={6} md={6} sm={6} xs={6} >
                             <label htmlFor="inputEmail4">First Name</label>
-                            <input type="text" name="firstName"  value={this.state.formFields.firstName} onChange={this.handleChange.bind(this)} className="form-control name-input" placeholder="Cristiano" required/>
+                            <input type="text" name="firstName"  value={this.state.formFields.firstName} onChange={this.handleChange.bind(this)} className="form-control name-input" placeholder="" required/>
                         </Col>
                         <Col lg={6} md={6} sm={6} xs={6} >
                             <label htmlFor="inputEmail4">Last Name</label>
-                            <input type="text" name="lastName" value={this.state.formFields.lastName} onChange={this.handleChange.bind(this)} className="form-control name-input" placeholder="Ronaldo" required/>
+                            <input type="text" name="lastName" value={this.state.formFields.lastName} onChange={this.handleChange.bind(this)} className="form-control name-input" placeholder="" required/>
                         </Col>
                     </Row>
                     <Row lg={2} md={2} sm={1} xs={1}>
                         <Col lg={6} md={6} sm={12} xs={12} className="form-group">
                             <label htmlFor="inputEmail4">Contact</label>
-                            <input type="number" name="contact" value={this.state.formFields.contact} onChange={this.handleChange.bind(this)} className="form-control" id="inputEmail4" placeholder="Phone Number" />
+                            <input type="number" name="contact" value={this.state.formFields.contact} onChange={this.handleChange.bind(this)} className="form-control" id="inputEmail4" placeholder="" />
                             <label className={"invalid-input"} style={{display: this.state.formFieldsErrors.contact.showmessage ? "block":"none"}}>{this.state.formFieldsErrors.contact.message}</label>
                         </Col>
                         <Col lg={6} md={6} sm={12} xs={12} className="form-group">
                             <label htmlFor="inputEmail4">Email</label>
-                            <input type="text" name="email" value={this.state.formFields.email} onChange={this.handleChange.bind(this)} className="form-control" id="inputEmail4" placeholder="cristiano@cr7.com" />
+                            <input type="text" name="email" value={this.state.formFields.email} onChange={this.handleChange.bind(this)} className="form-control" id="inputEmail4" placeholder="" />
                             <label className={"invalid-input"} style={{display: this.state.formFieldsErrors.email.showmessage ? "block":"none"}}>{this.state.formFieldsErrors.email.message}</label>
                         </Col>
                         <Col lg={6} md={6} sm={12} xs={12} className="form-group">
                             <label htmlFor="inputPassword4">Password</label>
-                            <input type="password" name="password" value={this.state.formFields.password} onChange={this.handleChange.bind(this)} className="form-control" id="inputPassword4" placeholder="cr7@portugal85" />
+                            <input type="password" name="password" value={this.state.formFields.password} onChange={this.handleChange.bind(this)} className="form-control" id="inputPassword4" placeholder="" />
                             <label className={"invalid-input"} style={{display: this.state.formFieldsErrors.password.showmessage ? "block":"none"}}>{this.state.formFieldsErrors.password.message}</label>
                         </Col>
                         <Col lg={6} md={6} sm={12} xs={12} className="form-group" style={{display:"none"}}>

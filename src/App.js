@@ -25,7 +25,13 @@ class App extends Component {
   //https://reacttraining.com/react-router/web/api/Hooks/usehistory
   
   loginFormSubmit = (loginFormObject) => {
-    return <Redirect to='/teamManager' />
+    Axios.post('http://localhost:4000/api/login',loginFormObject).then(function(response){
+      localStorage.setItem('authToken', response.data.token);
+      if (typeof response.data.token != "undefined") {
+        return <Redirect to='/teamManager' />
+      }
+    });
+    //return <Redirect to='/teamManager' />
     //console.log(loginFormObject);
   }
 
@@ -63,7 +69,7 @@ class App extends Component {
 
 const pageParentContainer={
   padding:"13px 0px 0px 0px",
-  width: "100%",
+  /* width: "100%", */
 }
 
 export default App;
