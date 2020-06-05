@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect  } from 'react-router-dom';
 import Axios from 'axios';
+import history from "./utils/history";
 
 import  'bootstrap/dist/css/bootstrap.min.css';
 import  'bootstrap/dist/js/bootstrap.min.js';
@@ -28,11 +29,10 @@ class App extends Component {
     Axios.post('http://localhost:4000/api/login',loginFormObject).then(function(response){
       localStorage.setItem('authToken', response.data.token);
       if (typeof response.data.token != "undefined") {
+        history.push("/teamManager");
         return <Redirect to='/teamManager' />
       }
     });
-    //return <Redirect to='/teamManager' />
-    //console.log(loginFormObject);
   }
 
   registerUser=(userObject)=>{
@@ -44,7 +44,7 @@ class App extends Component {
   
   render(){
     return (
-      <Router>
+      <Router history={history}>
           <Header />
           <Route exact path="/" render={props=>(
             <React.Fragment>
