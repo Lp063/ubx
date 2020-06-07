@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch  } from 'react-router-dom';
 import Axios from 'axios';
+import history from "./utils/history";
 
 import  'bootstrap/dist/css/bootstrap.min.css';
 import  'bootstrap/dist/js/bootstrap.min.js';
@@ -42,9 +43,9 @@ class App extends Component {
   }
 
   loginFormSubmit = (loginFormObject) => {
-    console.log(2345);
-    return <Redirect to='/xyz' />
-    //console.log(loginFormObject);
+    // return <Redirect to='/teamManager' />
+    console.log(loginFormObject);
+    history.push("/teamManager");
   }
 
   registerUser=(userObject)=>{
@@ -56,14 +57,7 @@ class App extends Component {
   
   render(){
     return (
-      <Router>
-            <Header />
-            <Switch>
-              <Route path="/" exact component={()=> <AppLogin loginFormSubmit={this.loginFormSubmit} /> }  />
-              <Route path="/xyz" exact component={TeamManager} />
-            </Switch>
-      </Router>
-      /* <Router>
+      <Router history={history}>
           <Header />
           <Route exact path="/" render={props=>(
             <React.Fragment>
@@ -81,7 +75,7 @@ class App extends Component {
             </React.Fragment>
           )}/>
           <Route path="/xyz" render={() => <h1>Welcome!</h1>} />
-      </Router> */
+      </Router>
     //
     );
   }
