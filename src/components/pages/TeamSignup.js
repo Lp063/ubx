@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 import Axios from 'axios';
-import { Row, Col} from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
 import TeamRegistration from '../forms/TeamRegistration';
 
@@ -15,7 +15,7 @@ class TeamSignup extends Component{
     //console.log(process.env.API);
   }
   submitRergistration = (formFields) =>{
-    Axios.post('http://192.168.56.1:4000/addUsers',formFields)
+    Axios.post('http://192.168.56.1:4000/api/addUser',formFields)
     .then(function(res) {
       if (res.affectedRows === 1) {
         
@@ -32,11 +32,9 @@ class TeamSignup extends Component{
   render(){
     return (
       <React.Fragment>
-        <Row style={this.props.pageParentContainerStyle}>
-          <Col lg={{ span: 6, offset: 3 }} md={{ span: 6, offset: 3 }} sm={12} xs={12}>
-            <TeamRegistration submitRergistration={this.submitRergistration}/>
-          </Col>
-        </Row>
+        <Col lg={{ span: 6, offset: 3 }} md={{ span: 6, offset: 3 }} sm={12} xs={12}>
+          <TeamRegistration submitRergistration={this.submitRergistration} />
+        </Col>
       </React.Fragment>
     )
   }

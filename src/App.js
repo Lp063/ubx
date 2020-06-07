@@ -43,8 +43,13 @@ class App extends Component {
   }
 
   loginFormSubmit = (loginFormObject) => {
-    // return <Redirect to='/teamManager' />
-    console.log(loginFormObject);
+    /* Axios.post('http://localhost:4000/api/login',loginFormObject).then(function(response){
+      localStorage.setItem('authToken', response.data.token);
+      if (typeof response.data.token != "undefined") {
+        history.push("/teamManager");
+        return <Redirect to='/teamManager' />
+      }
+    }); */
     history.push("/teamManager");
   }
 
@@ -83,7 +88,7 @@ class App extends Component {
 
 const pageParentContainer={
   padding:"13px 0px 0px 0px",
-  width: "100%",
+  /* width: "100%", */
 }
 
 export default App;

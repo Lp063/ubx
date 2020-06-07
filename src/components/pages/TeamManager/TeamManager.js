@@ -4,6 +4,7 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
 import PlayerListTableRow from '../../lists/playerList/PlayerListTableRow';
+import GamesPlayed from '../../lists/gamesPlayedList/GamesPlayed';
 
 import './TeamManager.css'
 
@@ -12,7 +13,8 @@ class TeamManager extends Component{
     constructor(props){
         super(props);
         this.state={
-            teamPlayerList:[]
+            teamPlayerList:[],
+            games:[]
         };
         
         //this.handleSubmit = this.handleSubmit.bind(this);
@@ -55,6 +57,86 @@ class TeamManager extends Component{
         ];
 
         this.setState({teamPlayerList:teamPlayers});
+
+        var gamesList=[
+            {
+                schedualId:0,
+                date:"17 September 2019",
+                games:[
+                    {
+                        gameId:0,
+                        location:"BVB Stadium, Dortmund",
+                        teams:[
+                            {
+                                name:"Dortmund",
+                                teamEmblem:"https://img.uefa.com/imgml/TP/teams/logos/140X140/52758.png",
+                                score:0
+                            },{
+                                name:"Barcelona",
+                                teamEmblem:"https://img.uefa.com/imgml/TP/teams/logos/140X140/50080.png",
+                                score:0
+                            }
+                        ],
+                        eventMediaUrl:{
+                            exist:true,
+                            url:"https://www.uefa.com/uefaeuropaleague/video/highlights/0256-0e693c3d4f09-c1509cd0000f-1000--highlights-partizan-0-1-man-united/",
+                            text:"Highlights"
+                        }
+                    }
+                ]
+            },{
+                schedualId:1,
+                date:"02 October 2019",
+                games:[
+                    {
+                        gameId:1,
+                        location:"Camp Nou, Barcelona",
+                        teams:[
+                            {
+                                name:"Barcelona",
+                                teamEmblem:"https://img.uefa.com/imgml/TP/teams/logos/140X140/50080.png",
+                                score:2
+                            },{
+                                name:"Internazionale",
+                                teamEmblem:"https://img.uefa.com/imgml/TP/teams/logos/140X140/50138.png",
+                                score:2
+                            }
+                        ],
+                        eventMediaUrl:{
+                            exist:false,
+                            url:"",
+                            text:""
+                        }
+                    }
+                ]
+            },{
+                schedualId:2,
+                date:"23 October 2019",
+                games:[
+                    {
+                        gameId:2,
+                        location:"Eden Arena, Parague",
+                        teams:[
+                            {
+                                name:"Slavia Praha",
+                                teamEmblem:"https://img.uefa.com/imgml/TP/teams/logos/140X140/52498.png",
+                                score:1
+                            },{
+                                name:"Barcelona",
+                                teamEmblem:"https://img.uefa.com/imgml/TP/teams/logos/140X140/50080.png",
+                                score:2
+                            }
+                        ],
+                        eventMediaUrl:{
+                            exist:false,
+                            url:"",
+                            text:""
+                        }
+                    }
+                ]
+            }
+        ];
+        this.setState({games:gamesList});
     }
 
     renderPlayerList = () => {
@@ -66,8 +148,8 @@ class TeamManager extends Component{
             <Row lg={2} md={2} sm={1} xs={1} style={this.props.pageParentContainerStyle}>
                 <Col lg={3} md={3} sm={12} xs={12} className="team-detail" style={{padding:"0px"}}>
                     <div className="team-detail-logo" style={style.teamDetail.logo} ></div>
-                    <div className="team-detail-name" ><label>Russian federation</label></div>
-                    <div className="team-detail-name" ><label>Manager : Mikhail Belikof</label></div>
+                    <div className="team-detail-name" ><label>Barcelona</label></div>
+                    <div className="team-detail-name" ><label>Manager : Quique Setién</label></div>
                 </Col>
                 <Col lg={9} md={9} sm={12} xs={12} style={{padding:"0px"}}>
                     <Tabs defaultActiveKey="performance" id="uncontrolled-tab-example">
@@ -90,9 +172,11 @@ class TeamManager extends Component{
                             <Container>
                                 <Row lg={2} md={2} sm={1} xs={1} >
                                     <Col lg={12} md={12} sm={12} xs={12}>
-                                        <Col lg={12} md={12} sm={12} xs={12} style={{textAlign: "center"}}>
-                                            No Games Played
-                                        </Col>
+                                        {
+                                            this.games = this.state.games.map((gamesOnThisDay)=>{
+                                                return <GamesPlayed key={gamesOnThisDay.schedualId} gamesInADay={gamesOnThisDay} />
+                                            })
+                                        }
                                     </Col>
                                 </Row>
                             </Container>
@@ -547,7 +631,7 @@ series: [{
 const style={
     teamDetail:{
         logo:{
-            backgroundImage: "url(https://images.freeimages.com/images/large-previews/049/russian-flag-1631600.jpg)",
+            backgroundImage: "url(https://img.uefa.com/imgml/TP/teams/logos/140X140/50080.png)",
         }
     }
 };
