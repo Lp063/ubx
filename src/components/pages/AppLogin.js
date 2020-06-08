@@ -17,8 +17,8 @@ class AppLogin extends Component{
   }
 
   handleSubmit = (event) =>{
-    this.props.loginFormSubmit(this.state);
     event.preventDefault();
+    this.props.loginFormSubmit(this.state);
   }
 
   render(){
@@ -35,9 +35,6 @@ class AppLogin extends Component{
                 <Form.Label >Password</Form.Label>
                 <Form.Control type="password" placeholder="workout" onChange={this.inputFieldUpdate} value={this.state.password} />
               </Form.Group>
-              <Button style={{position:"absolute",left:"5%"}} variant="outline-primary" >
-                Sign Up
-              </Button>
               <Button style={{position:"absolute",right:"5%"}} variant="primary" type="submit">
                 Login
               </Button>
@@ -49,9 +46,8 @@ class AppLogin extends Component{
   }
 }
 
-/* const loginLeftSpace = {
-  backgroundImage:'url(/images/turfSideline1.jpg)',
-  height:'100%'
-} */
+const loginLeftSpace = {
+  
+}
 
 export default AppLogin;

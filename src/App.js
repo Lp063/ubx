@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route  } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Axios from 'axios';
 import history from "./utils/history";
 
@@ -10,6 +10,11 @@ import Header from './components/layout/header';
 import AppLogin from './components/pages/AppLogin';
 import TeamSignup from './components/pages/TeamSignup';
 import TeamManager from './components/pages/TeamManager/TeamManager';
+
+
+Axios.defaults.baseURL = 'http://localhost:4000';
+// Axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+// Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 class App extends Component {
   
@@ -23,8 +28,20 @@ class App extends Component {
     }
   };
 
+  
+ //let history = useHistory();
+
   //https://reacttraining.com/react-router/web/api/Hooks/usehistory
   
+  componentDidMount(){
+    /* Axios.get('/getAllUsers').then(function(response){
+      console.log(response);
+    }).catch(function (error) {
+      // handle error
+      console.log(error);
+    }); */
+  }
+
   loginFormSubmit = (loginFormObject) => {
     /* Axios.post('http://localhost:4000/api/login',loginFormObject).then(function(response){
       localStorage.setItem('authToken', response.data.token);
@@ -62,6 +79,7 @@ class App extends Component {
               <TeamManager pageParentContainerStyle={pageParentContainer}  />
             </React.Fragment>
           )}/>
+          <Route path="/xyz" render={() => <h1>Welcome!</h1>} />
       </Router>
     //
     );
