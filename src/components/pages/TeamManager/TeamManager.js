@@ -177,7 +177,7 @@ class TeamManager extends Component{
                     <div className="team-detail-name" ><label>Manager : Quique Setién</label></div>
                 </Col>
                 <Col lg={9} md={9} sm={12} xs={12} style={{padding:"0px"}}>
-                    <Tabs defaultActiveKey="performance" id="uncontrolled-tab-example">
+                    <Tabs defaultActiveKey="performance" id="uncontrolled-tab-example" >
                         <Tab eventKey="performance" title="Performance">
                             <Container>
                                 <Row lg={4} md={4} sm={1} xs={1} style={{margin: "14px auto"}} >

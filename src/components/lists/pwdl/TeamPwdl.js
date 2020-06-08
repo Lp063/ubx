@@ -1,8 +1,7 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
 function TeamPwdl(props){
-    console.log(props);
     return(
         <Col lg={3} md={3} sm={12} xs={12} >
             <Col lg={12} md={12} sm={6} xs={6}>

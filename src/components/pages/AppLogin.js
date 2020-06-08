@@ -46,8 +46,4 @@ class AppLogin extends Component{
   }
 }
 
-const loginLeftSpace = {
-  
-}
-
 export default AppLogin;

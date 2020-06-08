@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Image } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCamera, faThumbsDown } from '@fortawesome/free-solid-svg-icons'
+import { faCamera } from '@fortawesome/free-solid-svg-icons'
 
 import './GamesPlayed.css'
 
