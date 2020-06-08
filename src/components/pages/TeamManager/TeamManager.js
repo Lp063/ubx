@@ -3,8 +3,9 @@ import { Container, Row, Col, Table, Tabs, Tab} from 'react-bootstrap';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
-import PlayerListTableRow from '../../lists/playerList/PlayerListTableRow';
+import TeamPwdl from '../../lists/pwdl/TeamPwdl'
 import GamesPlayed from '../../lists/gamesPlayedList/GamesPlayed';
+import PlayerListTableRow from '../../lists/playerList/PlayerListTableRow';
 
 import './TeamManager.css'
 
@@ -13,6 +14,8 @@ class TeamManager extends Component{
     constructor(props){
         super(props);
         this.state={
+            teamStats:{
+            },
             teamPlayerList:[],
             games:[]
         };
@@ -21,6 +24,28 @@ class TeamManager extends Component{
     }
 
     componentDidMount(){
+
+        var teamPwdl={
+            pwdl:[{
+                id:0,
+                metric:"played",
+                count:7
+            },{
+                id:1,
+                metric:"Won",
+                count:4
+            },{
+                id:2,
+                metric:"Drawn",
+                count:3
+            },{
+                id:3,
+                metric:"Lost",
+                count:0
+            }]
+        };
+        this.setState({teamStats:teamPwdl});
+
         var teamPlayers=[
             {
                 id:1,
@@ -155,6 +180,11 @@ class TeamManager extends Component{
                     <Tabs defaultActiveKey="performance" id="uncontrolled-tab-example">
                         <Tab eventKey="performance" title="Performance">
                             <Container>
+                                <Row lg={4} md={4} sm={1} xs={1} style={{margin: "14px auto"}} >
+                                    {
+                                        this.state.teamStats.pwdl ? this.state.teamStats.pwdl.map((detail,index)=>{ return <TeamPwdl key={index} card={detail} /> }):""
+                                    }
+                                </Row>
                                 <Row lg={2} md={2} sm={1} xs={1} >
                                     <div className="col-md-12">
                                         <HighchartsReact highcharts={Highcharts} options={teamPerformanceChart} />
