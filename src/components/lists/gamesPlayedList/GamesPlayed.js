@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Image } from 'react-bootstrap';
+import { Row, Col, Image } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCamera } from '@fortawesome/free-solid-svg-icons'
 
@@ -11,27 +11,31 @@ function GamesPlayed(props){
             <Col md={12} style={style.dateForGames}>{props.gamesInADay.date}</Col>
             {
                 props.gamesInADay.games.map((game,index)=>(
-                   <Col key={index} md={12} sm={12} xs={12} style={style.singleGame.container}>
-                        <Col md={3} sm={12} xs={12} className="hidden-sm hidden-xs" >{ game.location }</Col>
-                        <Col md={6} sm={12} xs={12} style={style.singleGame.teamScoreContainer}>
-                            <Col md={5} sm={12} xs={12} style={style.singleGame.team.container}>
-                                <label style={style.singleGame.team.name}>{game.teams[0].name} </label>
-                                <Image style={style.singleGame.team.emblemImage} src={game.teams[0].teamEmblem} />
-                            </Col>
-                            <Col md={2} sm={3} xs={3} style={style.singleGame.score}>
-                                {game.teams[0].score} - {game.teams[1].score}
-                            </Col>
-                            <Col md={5} sm={12} xs={12} style={style.singleGame.team.container}>
-                                <Image style={style.singleGame.team.emblemImage} src={game.teams[1].teamEmblem} />
-                                <label style={style.singleGame.team.name}>{game.teams[1].name}</label>
-                            </Col>
+                   <Row key={index} lg={3} md={3} sm={1} xs={1} style={style.singleGame.container}>
+                        <Col lg={3} md={3} sm={12} xs={12} >
+                            <label>{ game.location }</label>
+                        </Col>
+                        <Col md={6} sm={12} xs={12} >
+                            <Row lg={3} md={3} sm={1} xs={1} style={style.singleGame.teamScoreContainer}>
+                                <Col lg={4} md={4} sm={4} xs={12} style={style.singleGame.team.container}>
+                                    <label style={style.singleGame.team.name}>{game.teams[0].name} </label>
+                                    <Image style={style.singleGame.team.emblemImage} src={game.teams[0].teamEmblem} />
+                                </Col>
+                                <Col lg={4} md={4} sm={4} xs={3} style={style.singleGame.score}>
+                                    <label style={style.singleGame.score.label}>{game.teams[0].score} - {game.teams[1].score}</label>
+                                </Col>
+                                <Col lg={4} md={4} sm={4} xs={12} style={style.singleGame.team.container}>
+                                    <Image style={style.singleGame.team.emblemImage} src={game.teams[1].teamEmblem} />
+                                    <label style={style.singleGame.team.name}>{game.teams[1].name}</label>
+                                </Col>
+                            </Row>
                         </Col>
                         <Col md={3} sm={12} xs={12}>
                             {
                                 game.eventMediaUrl.exist?<div style={style.singleGame.highlights.circleAnchorTag}> <a href={game.eventMediaUrl.url} title={game.eventMediaUrl.text} style={style.singleGame.highlights.anchorTag}> <FontAwesomeIcon icon={faCamera} /> </a></div>:""
                             }
                         </Col>
-                    </Col>
+                    </Row>
                 ))
             }
         </Col>
@@ -53,12 +57,14 @@ const style={
             paddingTop:"21px"
         },
         teamScoreContainer:{
-            display:"flex",
-            alignItems:"center"
+            width:"unset"
         },
         score:{
             textAlign:"center",
-            display:"flex"
+            margin:"auto",
+            label:{
+                margin:"auto"
+            }
         },
         team:{
             container:{
@@ -76,6 +82,7 @@ const style={
             circleAnchorTag:{
                 border: "1px solid blue",
                 borderRadius: "35px",
+                margin:"auto",
                 width: "43px",
                 height: "41px"
             },
