@@ -2,6 +2,9 @@ import React,{ Component } from 'react';
 import Axios from 'axios';
 import { Col } from 'react-bootstrap';
 
+
+import history from "../../utils/history";
+
 import TeamRegistration from '../forms/TeamRegistration';
 
 class TeamSignup extends Component{
@@ -11,14 +14,11 @@ class TeamSignup extends Component{
     //this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillMount=()=>{
-    //console.log(process.env.API);
-  }
   submitRergistration = (formFields) =>{
-    Axios.post('http://192.168.56.1:4000/api/addUser',formFields)
+    Axios.post('/api/user',formFields)
     .then(function(res) {
       if (res.affectedRows === 1) {
-        
+        history.push("/");
       } else {
         
       }

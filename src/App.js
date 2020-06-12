@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import Axios from 'axios';
 import history from "./utils/history";
 
@@ -19,6 +19,7 @@ Axios.defaults.baseURL = 'http://localhost:4000';
 class App extends Component {
   
   state={
+    user_isLoggedIn:false,
     teamRegistration:{
       name:"",
       lastName:"",
@@ -43,14 +44,17 @@ class App extends Component {
   }
 
   loginFormSubmit = (loginFormObject) => {
-    /* Axios.post('http://localhost:4000/api/login',loginFormObject).then(function(response){
-      localStorage.setItem('authToken', response.data.token);
+    //window.location="/teamManager";
+    Axios.post('http://localhost:4000/api/login',loginFormObject).then(function(response){
       if (typeof response.data.token != "undefined") {
+        //state.user_isLoggedIn=true;
+        //this.setLoggedin();
+        localStorage.setItem('authToken', response.data.token);
         history.push("/teamManager");
-        return <Redirect to='/teamManager' />
+        //return <Redirect to='/teamManager' />
       }
-    }); */
-    history.push("/teamManager");
+    });
+    //history.push("/teamManager");
   }
 
   registerUser=(userObject)=>{
@@ -64,22 +68,11 @@ class App extends Component {
     return (
       <Router history={history}>
           <Header />
-          <Route exact path="/" render={props=>(
-            <React.Fragment>
-              <AppLogin  pageParentContainerStyle={pageParentContainer} loginFormSubmit={this.loginFormSubmit} />
-            </React.Fragment>
-          )}/>
-          <Route exact path="/signUpTeam" render={props=>(
-            <React.Fragment>
-              <TeamSignup  pageParentContainerStyle={pageParentContainer} registerUser={this.registerUser} />
-            </React.Fragment>
-          )}/>
-          <Route exact path="/teamManager" render={props=>(
-            <React.Fragment>
-              <TeamManager pageParentContainerStyle={pageParentContainer}  />
-            </React.Fragment>
-          )}/>
-          <Route path="/xyz" render={() => <h1>Welcome!</h1>} />
+          <Switch>
+            <Route exact path="/" render={(props)=><AppLogin  pageParentContainerStyle={pageParentContainer} loginFormSubmit={this.loginFormSubmit} />} />
+            <Route exact path="/signUpTeam" render={props=>(<TeamSignup  pageParentContainerStyle={pageParentContainer} registerUser={this.registerUser} />)}/>
+            <Route exact path="/teamManager" render={props=>(<TeamManager pageParentContainerStyle={pageParentContainer}  />)}/>
+          </Switch>
       </Router>
     //
     );
