@@ -15,9 +15,12 @@ class TeamSignup extends Component{
   }
 
   submitRergistration = (formFields) =>{
-    Axios.post('/api/user',formFields)
+    Axios.post('/user',formFields)
     .then(function(res) {
-      if (res.affectedRows === 1) {
+      
+      console.log(res);
+      if (res.data.response.success === 1) {
+        console.log(res);
         history.push("/");
       } else {
         

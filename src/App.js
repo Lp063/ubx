@@ -63,7 +63,7 @@ class App extends Component {
 
   registerUser=(userObject)=>{
     //Navigated to http://localhost:3000/?name=jason&lastName=Bourne&email=jasonbourne%40gmail.com&password=123456
-    Axios.post('/api/addUser',userObject).then(function(response){
+    Axios.post('/addUser',userObject).then(function(response){
       console.log(response);
     });
   }
