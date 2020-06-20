@@ -12,7 +12,7 @@ import TeamSignup from './components/pages/TeamSignup';
 import TeamManager from './components/pages/TeamManager/TeamManager';
 
 
-Axios.defaults.baseURL = 'http://localhost:4000';
+Axios.defaults.baseURL = 'http://localhost:4000/api';
 // Axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 // Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
@@ -45,7 +45,7 @@ class App extends Component {
 
   loginFormSubmit = (loginFormObject) => {
     //window.location="/teamManager";
-    Axios.post('http://localhost:4000/api/login',loginFormObject).then(function(response){
+    Axios.post('/login',loginFormObject).then((response)=>{
       if (typeof response.data.token != "undefined") {
         //state.user_isLoggedIn=true;
         //this.setLoggedin();
@@ -53,6 +53,9 @@ class App extends Component {
         history.push("/teamManager");
         //return <Redirect to='/teamManager' />
       }
+    },(error)=>{
+      history.push("/");
+      console.log(error);
     });
     //history.push("/teamManager");
   }
