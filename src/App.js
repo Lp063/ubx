@@ -49,6 +49,7 @@ class App extends Component {
       if (typeof response.data.token != "undefined") {
         //state.user_isLoggedIn=true;
         //this.setLoggedin();
+        this.setState({user_isLoggedIn:true});
         localStorage.setItem('authToken', response.data.token);
         history.push("/teamManager");
         //return <Redirect to='/teamManager' />
