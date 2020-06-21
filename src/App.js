@@ -44,10 +44,21 @@ class App extends Component {
   }
 
   loginFormSubmit = (loginFormObject) => {
-    //window.location="/teamManager";
     this.setState({user_isLoggedIn:true});
     history.push("/teamManager");
     return;
+
+    /* Axios.post('/login',loginFormObject).then((response)=>{
+      if (typeof response.data.token != "undefined") {
+        this.setState({user_isLoggedIn:true});
+        localStorage.setItem('authToken', response.data.token);
+        history.push("/teamManager");
+        //return <Redirect to='/teamManager' />
+      }
+    },(error)=>{
+      history.push("/");
+      console.log(error);
+    }); */
   }
 
   logoutClicked = () =>{
@@ -67,7 +78,7 @@ class App extends Component {
       <Router history={history}>
           <Header userLoggedin={this.state.user_isLoggedIn} logoutRedirect={this.logoutClicked} />
           <Switch>
-            <Route exact path="/" render={(props)=><AppLogin  pageParentContainerStyle={pageParentContainer} loginFormSubmit={this.loginFormSubmit} />} />
+            <Route exact path="/" render={(props)=>(!this.state.user_isLoggedIn?<AppLogin  pageParentContainerStyle={pageParentContainer} loginFormSubmit={this.loginFormSubmit} />:history.push("/teamManager") )} />
             <Route exact path="/signUpTeam" render={props=>(<TeamSignup  pageParentContainerStyle={pageParentContainer} registerUser={this.registerUser} />)}/>
             <Route exact path="/teamManager" render={props=>(
               this.state.user_isLoggedIn?<TeamManager pageParentContainerStyle={pageParentContainer}  />:history.push("/")  )}/>
