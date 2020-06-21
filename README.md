@@ -5,23 +5,23 @@ Clone Project
 
 run `npm install`
 
-Run mysql & then execute available scripts below
+Run mysql, import myflaskapp.sql &  execute available scripts below
 
 ## Available Scripts
 
 In the project directory, you can run:
 
+### `npm run start-api`
+
+Launches the app backend for the project.<br />
+
 ### `npm start`
 
-Runs the app in the development mode.<br />
+Runs the app UI in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
-
-### `npm run start-api`
-
-Launches the backend for the project.<br />
 
 ## Resources
 
