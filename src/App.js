@@ -45,20 +45,14 @@ class App extends Component {
 
   loginFormSubmit = (loginFormObject) => {
     //window.location="/teamManager";
-    Axios.post('/login',loginFormObject).then((response)=>{
-      if (typeof response.data.token != "undefined") {
-        //state.user_isLoggedIn=true;
-        //this.setLoggedin();
-        this.setState({user_isLoggedIn:true});
-        localStorage.setItem('authToken', response.data.token);
-        history.push("/teamManager");
-        //return <Redirect to='/teamManager' />
-      }
-    },(error)=>{
-      history.push("/");
-      console.log(error);
-    });
-    //history.push("/teamManager");
+    this.setState({user_isLoggedIn:true});
+    history.push("/teamManager");
+    return;
+  }
+
+  logoutClicked = () =>{
+    this.setState({user_isLoggedIn:false});
+    history.push("/");
   }
 
   registerUser=(userObject)=>{
@@ -71,11 +65,12 @@ class App extends Component {
   render(){
     return (
       <Router history={history}>
-          <Header />
+          <Header userLoggedin={this.state.user_isLoggedIn} logoutRedirect={this.logoutClicked} />
           <Switch>
             <Route exact path="/" render={(props)=><AppLogin  pageParentContainerStyle={pageParentContainer} loginFormSubmit={this.loginFormSubmit} />} />
             <Route exact path="/signUpTeam" render={props=>(<TeamSignup  pageParentContainerStyle={pageParentContainer} registerUser={this.registerUser} />)}/>
-            <Route exact path="/teamManager" render={props=>(<TeamManager pageParentContainerStyle={pageParentContainer}  />)}/>
+            <Route exact path="/teamManager" render={props=>(
+              this.state.user_isLoggedIn?<TeamManager pageParentContainerStyle={pageParentContainer}  />:history.push("/")  )}/>
           </Switch>
       </Router>
     //

@@ -17,23 +17,50 @@ class Menu extends Component{
                 <div className="collapse navbar-collapse d-sm-none .d-md-block" id="navbarNav">
                     <ul className="navbar-nav mr-auto" >
                         <li className="nav-item active" onClick = {this.pageNavItemClicked}>
-                            <Link style={pageLink} className="nav-link" to="/"> Home</Link>
+                            <Link style={this.pageLink(this.props,"always")} className="nav-link" to="/"> Home</Link>
                         </li>
                         <li className="nav-item" onClick = {this.pageNavItemClicked}>
-                            <Link style={pageLink} className="nav-link" to="/signUpTeam">Sign Up</Link>
+                            <Link style={this.pageLink(this.props,"notLoggedIn")} className="nav-link" to="/signUpTeam">Sign Up</Link>
                         </li>
                         <li className="nav-item" onClick = {this.pageNavItemClicked}>
-                            <Link style={pageLink} className="nav-link" to="/teamManager">Team</Link>
+                            <Link style={this.pageLink(this.props,"loggedInOnly")} className="nav-link" to="/teamManager">Team</Link>
+                        </li>
+                        <li className="nav-item" onClick = {this.pageNavItemClicked}>
+                            <Link style={this.pageLink(this.props,"loggedInOnly")} className="nav-link" onClick={this.props.logoutRedirect} to="/">Logout</Link>
                         </li>
                     </ul>
                 </div>
             </div>
         )
     }
+
+    pageLink = (props,accessFor)=>{
+
+        var styleObject = {
+            textDecoration:'none',
+            display:'none'
+        };
+
+        if (accessFor === "loggedInOnly" && props.userLoggedin) {
+            styleObject.display="block";
+        }
+        
+        if (accessFor === "notLoggedIn" && !props.userLoggedin) {
+            styleObject.display="block";
+        }
+
+        if (accessFor === "always") {
+            styleObject.display="block";
+        }
+        
+        return styleObject;
+    }
 }
 
-const pageLink={
+/* const pageLink={
     textDecoration:'none'
-}
+} */
+
+
 
 export default Menu

@@ -27,7 +27,7 @@ class TeamSignup extends Component{
       }
       /* res=>this.setState({ todos:res.data }) */
     }).catch(function (error) {
-      // handle error
+      history.push("/");
       console.log(error);
     });
   }
