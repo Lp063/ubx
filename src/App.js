@@ -44,11 +44,7 @@ class App extends Component {
   }
 
   loginFormSubmit = (loginFormObject) => {
-    this.setState({user_isLoggedIn:true});
-    history.push("/teamManager");
-    return;
-
-    /* Axios.post('/login',loginFormObject).then((response)=>{
+    Axios.post('/login',loginFormObject).then((response)=>{
       if (typeof response.data.token != "undefined") {
         this.setState({user_isLoggedIn:true});
         localStorage.setItem('authToken', response.data.token);
@@ -58,7 +54,7 @@ class App extends Component {
     },(error)=>{
       history.push("/");
       console.log(error);
-    }); */
+    });
   }
 
   logoutClicked = () =>{

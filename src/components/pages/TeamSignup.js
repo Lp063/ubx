@@ -15,8 +15,7 @@ class TeamSignup extends Component{
   }
 
   submitRergistration = (formFields) =>{
-    history.push("/");
-    /* Axios.post('/user',formFields)
+    Axios.post('/user',formFields)
     .then(function(res) {
       
       console.log(res);
@@ -26,10 +25,11 @@ class TeamSignup extends Component{
       } else {
         
       }
+      /* res=>this.setState({ todos:res.data }) */
     }).catch(function (error) {
       history.push("/");
       console.log(error);
-    }); */
+    });
   }
 
   render(){
